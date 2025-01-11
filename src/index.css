@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #1E1E22;
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.light {
+  --background: 245, 245, 245;
+  --text:27, 28, 34;
+  --purple:102, 44, 145;
+  --btntext:232, 233, 237;
+  --navbackground:235, 235, 235;
+}
+.gradient-text {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.boxxx {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #1E1E22;
+ 
+}
+.masked {
+  position: absolute;
+  color:white;
+  mask-image: url("./assets/mask.svg");
+  background-color: aqua;
+  mask-repeat: no-repeat;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.sectFilter{
+position: absolute;
+  color:white;
+  mask-image: url("./assets/mask.svg");
+  background-color: aqua;
+  mask-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+h1 {
+  cursor: default;
+}
+.leftbox{
+  color: #feb47b;
+  display: inline-block;
+}
+
+  .leftbox::after {
+  content: "";
+  position: absolute;
+  width: 100%; /* Adjust based on the desired box size */
+  height: 100%;
+  border: 4px solid purple; /* Border color and width */
+  border-right: none;
+ 
+  top: 0;
+  left: 0;
+  box-sizing: border-box; /* Ensure proper sizing with borders */
+}
+.leftbox::before{
+  content: "";
+  position: absolute;
+  width:calc(100% + 50px) ; 
+  height: 100%;
+  border-bottom: 4px solid purple;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+
