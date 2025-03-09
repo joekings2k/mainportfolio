@@ -6,6 +6,7 @@ import WorksTest from "./components/works/test";
 import Services from "./components/myservices";
 import { useEffect } from "react";
 import Lenis from "lenis";
+import Playground from "./components/playground";
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
       {/* <Test /> */}
       <WorksTest />
       <Services />
+      <Playground />
     </>
   );
 }

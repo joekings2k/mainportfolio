@@ -31,7 +31,7 @@ export default {
       },
       backgroundImage: {
         circularLight:
-          "repeating-radial-gradient(rgba( 237, 88, 22 ,0.4) 2px, #1E1E22 5px, #1E1E22 100px);",
+          "repeating-radial-gradient(rgba( 225, 225, 225 ,0.4) 2px, #1D2D44 5px, #1D2D44 100px);",
       },
     },
   },

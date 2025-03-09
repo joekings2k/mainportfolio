@@ -8,7 +8,7 @@ const Lilicon = ({refs}:{refs:any}) => {
   })
    const reversedProgress = useTransform(scrollYProgress, [0, 1], [1, 0]);
   return (
-    <figure className="absolute left-[124px] stroke-black">
+    <figure className="absolute -left-5 stroke-black">
       <svg width="75" height="75" viewBox="0 0 100 100" className='-rotate-90'>
         <circle
           cx={"75"}

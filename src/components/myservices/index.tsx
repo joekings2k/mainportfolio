@@ -8,22 +8,24 @@ const Services = () => {
     offset: ["start start", "end end"],
   });
   return (
-    <div className=" relative">
-      <div className="flex flex-col justify-center items-center pt-10 sticky top-0">
-        <p className="text-5xl font-extrabold text-white ">Exceptional </p>
-        <p className="text-5xl font-extrabold text-white">is the standard</p>
-        <p className="text-1xl  text-white mt-10">What i offer</p>
+    <div className="relative h-[560vh]">
+      <div className="flex flex-col justify-center h-[100vh] items-center pt-10 sticky top-0 bg-[#1D2D44]">
+        <div className="absolute top-16">
+          <p className="text-5xl font-extrabold text-white text-center">Exceptional </p>
+          <p className="text-5xl font-extrabold text-white text-center">is the standard</p>
+          <p className="text-1xl  text-white mt-10 text-center">What i offer</p>
+        </div>
         <svg
           width="250"
           height="213"
           viewBox="0 0 250 213"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-[5rem] left-[25rem]"
+          className="absolute top-[5rem] left-[26rem]"
         >
           <motion.path
             d="M161 0.5H0.5V212.5H250"
-            stroke="green"
+            stroke="white"
             strokeWidth="9"
             fill="none"
             strokeDasharray="900" // Approximate total length of the path
@@ -44,7 +46,7 @@ const Services = () => {
         >
           <motion.path
             d="M89.5 0.5H250V212.5H0.5"
-            stroke="green"
+            stroke="white"
             strokeWidth="9"
             fill="none"
             strokeDasharray="900" // Approximate total length of the path
@@ -54,14 +56,20 @@ const Services = () => {
           />
         </svg>
       </div>
-      <div className="relative" ref={containerRef}>
+      <div className="relative " ref={containerRef}>
         {Array.from({ length: 5 }).map((item, i) => {
           const targetScale = 1 - (Array.from({ length: 5 }).length - i) * 0.05;
           return (
             <div
-              className={`h-[100vh] flex flex-col items-center justify-center sticky top-0`}
+              className={`h-[90vh] flex flex-col items-center justify-center sticky top-0`}
             >
-              <ServicesCard key={i} i={i} range={[i * 0.25, 1]} targetScale={targetScale} progress={scrollYProgress} />
+              <ServicesCard
+                key={i}
+                i={i}
+                range={[i * 0.25, 1]}
+                targetScale={targetScale}
+                progress={scrollYProgress}
+              />
             </div>
           );
         })}

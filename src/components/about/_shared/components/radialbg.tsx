@@ -12,24 +12,31 @@ import HtmlIcon from "../iconshover/htmlicon";
 import NodeIcon from "../iconshover/nodeicon";
 import Expressicon from "../iconshover/expressicon";
 import MongodbIcon from "../iconshover/mongodbicon";
+import Tooltip from "../../../playground/tooltip";
 const Radialbg = () => {
   const color = " orange";
   const size = "50px";
   return (
-    <div className=" w-full h-full relative">
-      <div className="w-full h-screen top-0 flex   items-center justify-center rounded-full bg-circularLight sticky">
-        <MagneticiIcons>
-          <ReactHoverIcon color={color} size={size} />
-        </MagneticiIcons>
-        <SkillsAnimate x={"5vw"} y={"10vw"}>
+    <div className=" w-full h-full relative bg-[#1D2D44]  px-[6rem]">
+      <div className="w-full h-screen top-0 flex items-center justify-center rounded-full bg-circularLight sticky">
+        <Tooltip text="React">
           <MagneticiIcons>
-            <CssIcon color={color} size={size} />
+            <ReactHoverIcon color={color} size={size} />
           </MagneticiIcons>
+        </Tooltip>
+        <SkillsAnimate x={"5vw"} y={"10vw"}>
+          <Tooltip text="CSS">
+            <MagneticiIcons>
+              <CssIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"-9vw"} y={"19vw"}>
-          <MagneticiIcons>
-            <TailwindIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="Tailwind Css">
+            <MagneticiIcons>
+              <TailwindIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"10vw"} y={"-15vw"}>
           <MagneticiIcons>

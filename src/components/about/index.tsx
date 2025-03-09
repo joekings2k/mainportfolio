@@ -33,48 +33,54 @@ const About = () => {
   const size= "50px"
 
   return (
-    <div className="w-full h-[300vh] relative bg-[#1E1E22] text-white px-[0.5rem] md:px-[1rem] mb-16">
-      <div className="text-6xl"> About me</div>
-      <div>
-        <div className="h-[9rem] w-[9rem] rounded-full overflow-hidden relative mt-5">
-          <div className="inset-0 absolute bg-black/10 " />
-          <img
-            src={me}
-            alt="image of me"
-            style={{
-              height: "100%",
-              width: "100%",
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
+    <div className="w-full h-[300vh] relative">
+      <div className="bg-[#1D2D44] text-white  px-[6rem] py-[4rem]">
+        <div className="text-6xl"> Insights about me</div>
+        <div className="flex items-center gap-14">
+          <div>
+            <div className="h-[19rem] w-[18rem]  overflow-hidden relative mt-5">
+              <div className="inset-0 absolute bg-black/10 " />
+              <img
+                src={me}
+                alt="image of me"
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+              />
+            </div>
+          </div>
+          <div>
+            <p
+              className="text-[2rem] font-bold mt-[1rem] text-wrap"
+              ref={wordref}
+            >
+              {splitContent.map((word, i) => {
+                const start = i / splitContent.length;
+                const end = (i + 1) / splitContent.length;
+                return (
+                  <Word
+                    key={i}
+                    range={[start, end]}
+                    scrollYProgress={scrollYProgress}
+                  >
+                    {word}
+                  </Word>
+                );
+              })}
+            </p>
+          </div>
         </div>
       </div>
-      <div>
-        <p className="text-[2rem] font-bold mt-[1rem] text-wrap" ref={wordref}>
-          {splitContent.map((word, i) => {
-            const start = i / splitContent.length;
-            const end = (i + 1) / splitContent.length;
-            return (
-              <Word
-                key={i}
-                range={[start, end]}
-                scrollYProgress={scrollYProgress}
-              >
-                {word}
-              </Word>
-            );
-          })}
-        </p>
-      </div>
 
-      <div>
-        <h3 className="text-2xl">Experience </h3>
+      <div className="bg-[#0D1321] text-white  px-[6rem] py-[4rem]">
+        <h3 className="text-2xl"> My Experience </h3>
         <Experience_and_education />
-
       </div>
-      <div>
-        <p className="text-5xl mb-10">Tecnologies i use</p>
+      <div className="px-[6rem] py-[4rem] bg-[#1D2D44]">
+        <p className="text-5xl  text-white">Insight about me</p>
         <div className="hidden  px-10 justify-between mt-9">
           <MagneticiIcons>
             <ReactHoverIcon color={color} size={size} />
