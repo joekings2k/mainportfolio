@@ -39,44 +39,61 @@ const Radialbg = () => {
           </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"10vw"} y={"-15vw"}>
-          <MagneticiIcons>
-            <ReduxIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="Redux">
+            <MagneticiIcons>
+              <ReduxIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
+
         <SkillsAnimate x={"-7.2vw"} y={"-9vw"}>
-          <MagneticiIcons>
-            <FramerIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="Framer Motion">
+            <MagneticiIcons>
+              <FramerIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"25vw"} y={"0vw"}>
-          <MagneticiIcons>
-            <GithubIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="Github">
+            <MagneticiIcons>
+              <GithubIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"-25vw"} y={"0vw"}>
-          <MagneticiIcons>
-            <NextjsIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="NextJs">
+            <MagneticiIcons>
+              <NextjsIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"25vw"} y={"13vw"}>
-          <MagneticiIcons>
-            <HtmlIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="Html">
+            <MagneticiIcons>
+              <HtmlIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"43vw"} y={"-5vw"}>
-          <MagneticiIcons>
-            <NodeIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="NodeJs">
+            <MagneticiIcons>
+              <NodeIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"-16vw"} y={"-18vw"}>
-          <MagneticiIcons>
-            <Expressicon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="ExpressJs">
+            <MagneticiIcons>
+              <Expressicon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
         <SkillsAnimate x={"-35vw"} y={"-9vw"}>
-          <MagneticiIcons>
-            <MongodbIcon color={color} size={size} />
-          </MagneticiIcons>
+          <Tooltip text="MongoDB">
+            <MagneticiIcons>
+              <MongodbIcon color={color} size={size} />
+            </MagneticiIcons>
+          </Tooltip>
         </SkillsAnimate>
       </div>
     </div>
