@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import { color, motion, useScroll } from "framer-motion";
+import { color, motion, useScroll ,useTransform} from "framer-motion";
 import { Word } from "./wordanimation";
 import me from "../../assets/aboutmeimg.jpg"
+import mask from "../../assets/mask.svg";
 import { Reactsvg } from "../../constants/icons";
 import MagneticiIcons from "./_shared/framerMagnetic";
 import ReactHoverIcon from "./_shared/iconshover/reacthover";
@@ -20,6 +21,7 @@ import Radialbg from "./_shared/components/radialbg";
 import Experience_and_education from "./_shared/expreience";
 
 const About = () => {
+  const boxRef  = useRef<any>(null);
   const wordref = useRef<any>(null);
   const content =
     "I am a dedicated Full-Stack Developer with over 2 years of experience heavily focused on front-end development. I specialize in creating intuitive, responsive, and dynamic user interfaes,while ensuring seamless integration with back-end systems. My expertise includes modern JavaScript frameworks like React, and I am passionate about delivering optimized user experiences with clean, maintainable code. Constantly learning and adapting, I stay updated with the latest industry trends and best practices, always aiming to push the boundaries of web development.";
@@ -29,12 +31,36 @@ const About = () => {
     target: wordref,
     offset: ["start 0.8", "end 0.8"],
   });
+
+  const { scrollYProgress: scrollYProgress2 } = useScroll({
+    target: boxRef,
+    offset: ["start start", "end end"],
+  });
+  const scale  = useTransform(scrollYProgress2, [0, 1], [0.4, 6]); 
+  const opacity = useTransform(scrollYProgress2, [0, 1], [0.3, 1]);
   const color =" orange"
   const size= "50px"
 
   return (
-    <div className="w-full h-[300vh] relative">
-      <div className="bg-[#1D2D44] text-white  px-[6rem] py-[4rem]">
+    <div className="w-full bg-white ">
+      <div className="h-[300vh] relative  " ref={boxRef}>
+        <div className="h-[100vh] bg-white sticky top-[0px] overflow-hidden">
+          <div className=" w-[100%] h-[100%] absolute top-0 flex items-center justify-center">
+            <motion.div
+              style={{ scale,opacity }}
+              className=" w-[20rem] h-[20rem] rounded-full bg-black z-50"
+            ></motion.div>
+          </div>
+        </div>
+      </div>
+
+      <motion.div
+        className="bg-black text-white  px-[6rem] py-[4rem]"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
         <div className="text-6xl"> Insights about me</div>
         <div className="flex items-center gap-14">
           <div>
@@ -73,7 +99,7 @@ const About = () => {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="bg-[#0D1321] text-white  px-[6rem] py-[4rem]">
         <h3 className="text-2xl"> My Experience </h3>

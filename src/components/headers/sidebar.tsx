@@ -13,7 +13,7 @@ const Sidebar = () => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-screen bg-[red] fixed right-0 top-0 text-white "
+      className="h-screen bg-[#000000] fixed right-0 top-0 text-white "
       style={{ width: "25rem", zIndex: 1 }}
     >
       <motion.div className="flex flex-col items-center gap-10 mt-40">

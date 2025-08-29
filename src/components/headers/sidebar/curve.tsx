@@ -32,7 +32,7 @@ const Curve = () => {
     },
   };
   return (
-    <svg className="absolute top-0 left-[-49.5px] w-[50px] h-full fill-[red] stroke-none">
+    <svg className="absolute top-0 left-[-49.5px] w-[50px] h-full fill-[#000000] stroke-none">
       <motion.path
         variants={curve}
         initial="initial"

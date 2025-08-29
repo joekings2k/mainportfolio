@@ -7,13 +7,13 @@ const AnimatedMenuButton = ({ active, setActive }: Props) => {
   return (
     <MotionConfig transition={{ duration: "0.3", ease: "easeInOut" }}>
       <motion.div
-        className="relative h-10 w-10 rounded-full"
+        className={`relative h-10 w-10 rounded-full ${active ? "bg-[white]" : "bg-black"} transition-colors duration-1000`}
         animate={active ? "open" : "close"}
         onClick={() => setActive((previous: any) => !previous)}
         initial={false}
       >
         <motion.span
-          className="absolute h-0.5 w-5 bg-[green]"
+          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
           style={{ top: "35%", left: "50%", x: "-50%", y: "-50%" }}
           variants={{
             open: {
@@ -27,7 +27,7 @@ const AnimatedMenuButton = ({ active, setActive }: Props) => {
           }}
         />
         <motion.span
-          className="absolute h-0.5 w-5 bg-[green]"
+          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
           style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
           variants={{
             open: {
@@ -39,7 +39,7 @@ const AnimatedMenuButton = ({ active, setActive }: Props) => {
           }}
         />
         <motion.span
-          className="absolute h-0.5 w-5 bg-[green] "
+          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
           style={{ bottom: "31%", left: "50%", x: "-50%", y: "-50%" }}
           variants={{
             open: {

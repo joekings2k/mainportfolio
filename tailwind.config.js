@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontSize: {
-        "2xl": "5rem",
+       
       },
       colors: {
         background: " rgba(var(--background)) ",
