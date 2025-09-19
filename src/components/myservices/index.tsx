@@ -9,11 +9,15 @@ const Services = () => {
   });
   return (
     <div className="relative h-[560vh]">
-      <div className="flex flex-col justify-center h-[100vh] items-center pt-10 sticky top-0 bg-[#1D2D44]">
+      <div className="flex flex-col justify-center h-[100vh] items-center pt-10 sticky top-0 bg-white">
         <div className="absolute top-16">
-          <p className="text-5xl font-extrabold text-white text-center">Exceptional </p>
-          <p className="text-5xl font-extrabold text-white text-center">is the standard</p>
-          <p className="text-1xl  text-white mt-10 text-center">What i offer</p>
+          <p className="text-5xl font-extrabold text-black text-center ">
+            Exceptional{" "}
+          </p>
+          <p className="text-5xl font-extrabold text-black text-center">
+            is the standard
+          </p>
+          <p className="text-1xl  text-black mt-10 text-center">What i offer</p>
         </div>
         <svg
           width="250"
@@ -25,7 +29,7 @@ const Services = () => {
         >
           <motion.path
             d="M161 0.5H0.5V212.5H250"
-            stroke="white"
+            stroke="#00000080" //add opacity to the stroke
             strokeWidth="9"
             fill="none"
             strokeDasharray="900" // Approximate total length of the path
@@ -46,7 +50,7 @@ const Services = () => {
         >
           <motion.path
             d="M89.5 0.5H250V212.5H0.5"
-            stroke="white"
+            stroke="#00000080"
             strokeWidth="9"
             fill="none"
             strokeDasharray="900" // Approximate total length of the path

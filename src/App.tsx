@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Lenis from "lenis";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import Playground from "./components/playground";
+import FillerComponent from "./components/fillercomponent";
 
 function App() {
   const size = 10;
@@ -50,7 +51,7 @@ function App() {
         <Headers />
         <div>
           <Herosect />
-        
+
           <motion.div
             className="absolute top-1/2 right-[-8rem] h-16 w-[calc(100vh-10rem)] flex justify-center items-center gap-10 font-bold rotate-90 z-20 pointer-events-none"
             style={{
@@ -60,14 +61,14 @@ function App() {
               WebkitMaskSize: `${size}px`,
               backgroundColor: "#000000",
             }}
-          >
-            
-          </motion.div>
+          ></motion.div>
         </div>
         <About />
 
         <WorksTest />
+        <FillerComponent />
         <Services />
+
         <Playground />
       </div>
     </>

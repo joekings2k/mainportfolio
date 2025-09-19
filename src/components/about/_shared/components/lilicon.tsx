@@ -14,12 +14,12 @@ const Lilicon = ({refs}:{refs:any}) => {
           cx={"75"}
           cy={"50"}
           r={"20"}
-          className="stroke-purple-500 stroke-1 fill-none"
+          className="stroke-blue-900 stroke-3 fill-none"
         />
 
-        <motion.circle cx={"75"} cy={"50"} r={"20"} className=" stroke-[5px] fill-white" style={{pathLength:reversedProgress}} />
+        <motion.circle cx={"75"} cy={"50"} r={"20"} className=" stroke-[5px] fill-white/90" style={{pathLength:reversedProgress}} />
 
-        <circle cx={"75"} cy={"50"} r={"10"} className="stroke-1 fill-purple-400 animate-pulse" />
+        <circle cx={"75"} cy={"50"} r={"10"} className="stroke-1 fill-blue-400 animate-pulse" />
       </svg>
     </figure>
   );

@@ -16,7 +16,7 @@ export const Word = ({
   const amount = range[1] - range[0];
   const step = amount / children.length;
   return (
-    <span className="relative whitespace-nowrap">
+    <span className="relative  ">
       {splitLetter.map((letter: string, i: number) => {
         const start = range[0] + step * i;
         const end = range[0] + step * (i + 1);

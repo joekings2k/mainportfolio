@@ -31,7 +31,7 @@ const WorksTest = () => {
       <div className="mt-14">
         <div className="h-[600vh] relative" ref={ref}>
           {/* <div className="w-screen h-[calc(100vh-5rem)] flex items center  "> my Works</div> */}
-          <div className="sticky top-0 flex h-screen gap-4 items-center bg-[#0D1321] overflow-hidden ">
+          <div className="sticky top-0 flex h-screen gap-4 items-center bg-black overflow-hidden ">
             <motion.div className="flex" style={{ x }}>
               {/* <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-r from-green-300-300 to-red-300 "></div> */}
               {/* <div className="h-screen w-screen flex md:hidden items-center justify-center bg-gradient-to-r from-green-300 to-red-300  "></div> */}

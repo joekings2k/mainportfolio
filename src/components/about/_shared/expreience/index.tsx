@@ -14,7 +14,7 @@ const Experience_and_education = () => {
         <motion.div
           ref={ref}
           style={{ scaleY: y }}
-          className="absolute left-4 top-1 w-[4px] h-full bg-red-400 origin-top"
+          className="absolute left-4 top-1 w-[4px] h-full bg-white/50 origin-top"
         />
         <div className="ml-[6rem] flex flex-col gap-10 ">
           <Details />

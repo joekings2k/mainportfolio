@@ -7,9 +7,7 @@ export default {
   ],
   theme: {
     extend: {
-      fontSize: {
-       
-      },
+      fontSize: {},
       colors: {
         background: " rgba(var(--background)) ",
         text: " rgba(var(--text)) ",
@@ -31,7 +29,7 @@ export default {
       },
       backgroundImage: {
         circularLight:
-          "repeating-radial-gradient(rgba( 225, 225, 225 ,0.4) 2px, #1D2D44 5px, #1D2D44 100px);",
+          "repeating-radial-gradient(rgba( 225, 225, 225 ,0.2) 2px, transparent 5px, transparent 100px);",
       },
     },
   },
