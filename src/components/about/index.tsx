@@ -1,9 +1,7 @@
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import {  motion, useScroll ,useTransform} from "framer-motion";
 import { Word } from "./wordanimation";
-import me from "../../assets/aboutmeimg.jpg"
-import mask from "../../assets/mask.svg";
-import { Reactsvg } from "../../constants/icons";
+
 import MagneticiIcons from "./_shared/framerMagnetic";
 import ReactHoverIcon from "./_shared/iconshover/reacthover";
 import HtmlIcon from "./_shared/iconshover/htmlicon";
