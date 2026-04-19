@@ -17,7 +17,7 @@ const Radialbg = () => {
   const color = " orange";
   const size = "50px";
   return (
-    <div className=" w-full h-full relative bg-black  px-[6rem]">
+    <div className=" w-full h-full relative bg-black  px-[6rem]" data-theme="dark">
       <div className="w-full h-screen top-0 flex items-center justify-center rounded-full bg-circularLight sticky">
         <Tooltip text="React">
           <MagneticiIcons>

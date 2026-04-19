@@ -1,19 +1,21 @@
-
-
 import { motion } from "framer-motion";
 import { listvariants } from "../../anim";
+import type { Theme } from "../useSectionTheme";
 
 interface Props {
   title: string;
   link: string;
   index: number;
+  theme: Theme;
   onNavigate?: () => void;
 }
 const DURATION = 0.25;
 const STAGGER = 0.025;
 const ease = [0.76, 0, 0.24, 1];
 
-const MenuItem = ({ title, link, index, onNavigate }: Props) => {
+const MenuItem = ({ title, link, index, theme, onNavigate }: Props) => {
+  const bg = theme === "dark" ? "#FFFFFF" : "#000000";
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (link.startsWith("#")) {
       e.preventDefault();
@@ -39,7 +41,8 @@ const MenuItem = ({ title, link, index, onNavigate }: Props) => {
         onClick={handleClick}
         initial={"initial"}
         whileHover={"hovered"}
-        className="text-4xl bg-black relative cursor-pointer"
+        className="text-4xl relative cursor-pointer transition-colors duration-500"
+        style={{ backgroundColor: bg }}
       >
         <div className="overflow-hidden">
           {title.split("").map((t, i) => (

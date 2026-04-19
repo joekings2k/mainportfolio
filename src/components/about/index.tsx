@@ -53,7 +53,7 @@ const wordopacity1 = useTransform(scrollYProgress1, [0, 1], [0, 1]);
 
   return (
     <div className="w-full ">
-      <div className="h-[200vh] relative  " ref={boxRef}>
+      <div className="h-[200vh] relative  " ref={boxRef} data-theme="light">
         <div className="h-[100vh] bg-white sticky top-[0px] overflow-hidden">
           <div className=" w-[100%] h-[100%] absolute top-0 flex items-center justify-center">
             <motion.div
@@ -66,7 +66,7 @@ const wordopacity1 = useTransform(scrollYProgress1, [0, 1], [0, 1]);
 
       <motion.div
         className="bg-black text-white  px-[10rem] h-screen"
-       
+        data-theme="dark"
       >
         <div className="flex items-center ">
           
@@ -116,11 +116,11 @@ const wordopacity1 = useTransform(scrollYProgress1, [0, 1], [0, 1]);
         </div>
       </motion.div>
 
-      <div className="bg-[black] text-white  px-[6rem] py-[4rem]">
+      <div className="bg-[black] text-white  px-[6rem] py-[4rem]" data-theme="dark">
         <h3 className="text-2xl"> My Experience </h3>
         <Experience_and_education />
       </div>
-      <div className="px-[6rem] py-[4rem]">
+      <div className="px-[6rem] py-[4rem]" data-theme="dark">
         <p className="text-5xl  text-white">Insight about me</p>
         <div className="flex flex-wrap gap-6  px-10 justify-between mt-9">
           <MagneticiIcons>

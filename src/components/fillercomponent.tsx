@@ -11,7 +11,7 @@ function FillerComponent() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <div className="h-[200vh] relative sticky top-0" ref={boxRef}>
+    <div className="h-[200vh] relative sticky top-0" ref={boxRef} data-theme="light">
       <div className="h-[100vh] bg-white sticky top-[0px] overflow-hidden">
         <div className=" w-[100%] h-[100%] absolute top-0 flex items-center justify-center">
           <motion.div

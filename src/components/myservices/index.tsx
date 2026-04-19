@@ -8,7 +8,7 @@ const Services = () => {
     offset: ["start start", "end end"],
   });
   return (
-    <div className="relative h-[560vh]">
+    <div className="relative h-[560vh]" data-theme="light">
       <div className="flex flex-col justify-center h-[100vh] items-center pt-10 sticky top-0 bg-white">
         <div className="absolute top-16">
           <p className="text-5xl font-extrabold text-black text-center ">

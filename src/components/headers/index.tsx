@@ -2,16 +2,25 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "./sidebar";
 import AnimatedMenuButton from "./animatedmenubutton";
+import { useSectionTheme } from "./useSectionTheme";
 
 const Headers = () => {
   const [active, setActive] = useState<boolean>(false);
+  const theme = useSectionTheme("light");
+
   return (
     <>
       <div className="fixed top-7 right-7 z-[100]">
-        <AnimatedMenuButton active={active} setActive={setActive} />
+        <AnimatedMenuButton
+          active={active}
+          setActive={setActive}
+          theme={theme}
+        />
       </div>
       <AnimatePresence mode="wait">
-        {active && <Sidebar onNavigate={() => setActive(false)} />}
+        {active && (
+          <Sidebar theme={theme} onNavigate={() => setActive(false)} />
+        )}
       </AnimatePresence>
     </>
   );

@@ -49,7 +49,7 @@ function App() {
 
       <Headers />
 
-      <section id="home">
+      <section id="home" data-theme="light">
         <Herosect />
       </section>
 
@@ -57,7 +57,7 @@ function App() {
         <About />
       </section>
 
-      <section id="work">
+      <section id="work" data-theme="dark">
         <WorksTest />
       </section>
 
@@ -65,7 +65,7 @@ function App() {
 
       <Services />
 
-      <section id="contact">
+      <section id="contact" data-theme="dark">
         <Contact />
       </section>
     </div>
