@@ -1,14 +1,13 @@
 import Headers from "./components/headers";
 import Herosect from "./components/herosect";
 import About from "./components/about";
-
 import WorksTest from "./components/works/test";
 import Services from "./components/myservices";
-import { useEffect, useState } from "react";
+import Contact from "./components/contact";
+import FillerComponent from "./components/fillercomponent";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
-import Playground from "./components/playground";
-import FillerComponent from "./components/fillercomponent";
 
 function App() {
   const size = 10;
@@ -26,10 +25,11 @@ function App() {
     return () => window.removeEventListener("mousemove", setFromEvent);
   }, [x, y]);
   const maskPosition = useMotionTemplate`${springX}px ${springY}px`;
+
   useEffect(() => {
     const lenis = new Lenis();
 
-    function raf(time: any) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
@@ -38,44 +38,38 @@ function App() {
   }, []);
 
   return (
-    <>
-      <div className="mainContainer">
-        <motion.div
-          className="mainMask"
-          style={{
-            WebkitMaskPosition: maskPosition,
-            WebkitMaskSize: `${size}px`,
-          }}
-        />
+    <div className="mainContainer">
+      <motion.div
+        className="mainMask"
+        style={{
+          WebkitMaskPosition: maskPosition,
+          WebkitMaskSize: `${size}px`,
+        }}
+      />
 
-        <Headers />
-        <div>
-          <Herosect />
+      <Headers />
 
-          <motion.div
-            className="absolute top-1/2 right-[-8rem] h-16 w-[calc(100vh-10rem)] flex justify-center items-center gap-10 font-bold rotate-90 z-20 pointer-events-none"
-            style={{
-              WebkitMaskImage: "url('./assets/mask.svg')",
-              WebkitMaskRepeat: "no-repeat",
-              WebkitMaskPosition: maskPosition,
-              WebkitMaskSize: `${size}px`,
-              backgroundColor: "#000000",
-            }}
-          ></motion.div>
-        </div>
+      <section id="home">
+        <Herosect />
+      </section>
+
+      <section id="about">
         <About />
+      </section>
 
+      <section id="work">
         <WorksTest />
-        <FillerComponent />
-        <Services />
+      </section>
 
-        <Playground />
-      </div>
-    </>
+      <FillerComponent />
+
+      <Services />
+
+      <section id="contact">
+        <Contact />
+      </section>
+    </div>
   );
 }
 
 export default App;
-{
-  /* <Test /> */
-}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import ServicesCard from "./_shared/servicesCard";
 const Services = () => {
@@ -61,10 +61,11 @@ const Services = () => {
         </svg>
       </div>
       <div className="relative " ref={containerRef}>
-        {Array.from({ length: 5 }).map((item, i) => {
+        {Array.from({ length: 5 }).map((_, i) => {
           const targetScale = 1 - (Array.from({ length: 5 }).length - i) * 0.05;
           return (
             <div
+              key={i}
               className={`h-[90vh] flex flex-col items-center justify-center sticky top-0`}
             >
               <ServicesCard

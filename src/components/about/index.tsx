@@ -23,7 +23,7 @@ const About = () => {
   const wordref = useRef<any>(null);
   const wordref1 = useRef<any>(null);
   const content =
-    "I am a dedicated Full-Stack Developer with over 3 years of experience heavily focused on front-end development. I specialize in creating intuitive, responsive, and dynamic user interfaes,while ensuring seamless integration with back-end systems."
+    "I am a dedicated Full-Stack Developer with over 3 years of experience heavily focused on front-end development. I specialize in creating intuitive, responsive, and dynamic user interfaces, while ensuring seamless integration with back-end systems."
 
   const seccontent =
     "I love turning ideas into sleek, responsive apps that feel effortless to use. Whether it’s crafting smooth animations, building scalable features, or experimenting with new tech, I’m all about creating experiences that people actually enjoy.";
@@ -122,7 +122,7 @@ const wordopacity1 = useTransform(scrollYProgress1, [0, 1], [0, 1]);
       </div>
       <div className="px-[6rem] py-[4rem]">
         <p className="text-5xl  text-white">Insight about me</p>
-        <div className="hidden  px-10 justify-between mt-9">
+        <div className="flex flex-wrap gap-6  px-10 justify-between mt-9">
           <MagneticiIcons>
             <ReactHoverIcon color={color} size={size} />
           </MagneticiIcons>

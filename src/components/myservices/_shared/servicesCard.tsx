@@ -1,5 +1,5 @@
 import { useTransform, motion, useScroll } from "framer-motion";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 const ServicesCard = ({
   i,

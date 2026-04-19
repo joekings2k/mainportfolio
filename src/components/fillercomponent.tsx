@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function FillerComponent() {
-  const boxRef = useRef<any>();
+  const boxRef = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     target: boxRef,
     offset: ["start start", "end end"],

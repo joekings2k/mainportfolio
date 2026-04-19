@@ -1,14 +1,12 @@
 import { ReactNode, useRef } from "react";
 
-const Tooltip = ({
-  children,
-  text,
-  direction = "top", // Default direction
-}: {
+interface TooltipProps {
   children: ReactNode;
   text: string;
   direction?: "top" | "bottom" | "left" | "right";
-}) => {
+}
+
+const Tooltip = ({ children, text, direction = "top" }: TooltipProps) => {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -23,7 +21,6 @@ const Tooltip = ({
       }}
     >
       {children}
-      {/* Tooltip container */}
       <div
         ref={tooltipRef}
         className={`invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 transition bg-[#0D1321] text-white p-2 absolute rounded-xl whitespace-nowrap flex items-center ${
@@ -37,7 +34,6 @@ const Tooltip = ({
         }`}
       >
         <span>{text}</span>
-        {/* Arrow */}
         <div
           className={`w-0 h-0 border-solid absolute ${
             direction === "top"
@@ -55,32 +51,3 @@ const Tooltip = ({
 };
 
 export default Tooltip;
-
-// import { ReactNode, useRef } from "react";
-
-// const Tooltip = ({ children, text }: { children: ReactNode; text: string }) => {
-//   const tooltipRef = useRef<HTMLDivElement>(null);
-//   const containerRef = useRef<HTMLDivElement>(null);
-//   return (
-//     <div
-//       className="group relative inline-block"
-//       ref={containerRef}
-//       onMouseEnter={({ clientX }) => {
-//         if (!tooltipRef.current || !containerRef.current) return;
-//         const { left } = containerRef.current?.getBoundingClientRect();
-//         tooltipRef.current.style.left = clientX - left + "px";
-//       }}
-//     >
-//       {children}
-//       <div
-//         ref={tooltipRef}
-//         className="invisible group-hover:visible opacity-0 group-hover:opacity-100 duration-500 transition bg-blue-700 text-white p-1 absolute top-0 rounded-xl whitespace-nowrap flex flex-col items-center"
-//       >
-//         <span className="px-2 py-1">{text}</span>
-//         <div className="arrow"></div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Tooltip;

@@ -1,15 +1,17 @@
-import placebit from "../../assets/placebitmoji.png";
-import backdrop from "../../assets/backdrop.png";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import MagneticiIcons from "../about/_shared/framerMagnetic";
-interface HerosectProps {
-  setIshovered: (hovered: boolean) => void;
-  mousePosition: { x: number; y: number };
-}
+
+const SOCIAL_LINKS = [
+  { label: "Linkedin", href: "https://www.linkedin.com/" },
+  { label: "Github", href: "https://github.com/joekings2k" },
+  { label: "Twitter", href: "https://twitter.com/" },
+  { label: "Instagram", href: "https://www.instagram.com/" },
+];
+
 const Herosect = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [ishovered, setIshovered] = useState<Boolean>(false);
+  const [ishovered, setIshovered] = useState<boolean>(false);
   useEffect(() => {
     const setFromEvent = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -27,10 +29,17 @@ const Herosect = () => {
         <div className="text-white ">Time</div>
       </div>
       <div className="absolute top-[40%] left-[-150px]  flex gap-10 font-bold rotate-90 z-0">
-        <p>Linkedin</p>
-        <p>Github</p>
-        <p>Twitter</p>
-        <p>Instagram</p>
+        {SOCIAL_LINKS.map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-70 transition-opacity"
+          >
+            {s.label}
+          </a>
+        ))}
       </div>
       <div className="absolute bottom-10 right-10  flex gap-10  font-bold z-0">
         <MagneticiIcons>
@@ -54,17 +63,24 @@ const Herosect = () => {
           >
             <p className="text-[#FFFFFF] text-center">Hello there,</p>
             <p className="text-[#FFFFFF] text-center">I am Jonathan</p>
-            <p className="text-center">Front-end Heavy as seen</p>
+            <p className="text-center">Front-end Heavy</p>
           </aside>
           <div className="w-[150px] h-[50px] bg-white absolute bottom-10 left-8 flex items-center justify-center">
             <p className="text-black text-[1rem] z-50">Time</p>
           </div>
         </div>
         <div className="absolute top-[40%] left-[-150px]  flex gap-10 font-bold rotate-90 z-10 text-white">
-          <p>Linkedin</p>
-          <p>Github</p>
-          <p>Twitter</p>
-          <p>Instagram</p>
+          {SOCIAL_LINKS.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-70 transition-opacity"
+            >
+              {s.label}
+            </a>
+          ))}
         </div>
         <div className="absolute bottom-10 right-10  flex gap-10 font-bold z-10 text-white">
           <MagneticiIcons>
