@@ -4,7 +4,7 @@ import { menuSlide } from "../anim";
 import MenuItem from "./sidebar/menuItems";
 import { navItems } from "../../constants";
 import Curve from "./sidebar/curve";
-import type { Theme } from "./useSectionTheme";
+import type { Theme } from "../../hooks/useSectionTheme";
 
 interface SidebarProps {
   theme: Theme;

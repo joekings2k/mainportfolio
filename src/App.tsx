@@ -8,6 +8,7 @@ import FillerComponent from "./components/fillercomponent";
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { useSectionTheme } from "./hooks/useSectionTheme";
 
 function App() {
   const size = 10;
@@ -15,6 +16,8 @@ function App() {
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 300, damping: 30 });
   const springY = useSpring(y, { stiffness: 300, damping: 30 });
+  const theme = useSectionTheme("light");
+  const maskColor = theme === "dark" ? "#FFFFFF" : "#000000";
 
   useEffect(() => {
     const setFromEvent = (e: MouseEvent) => {
@@ -41,6 +44,8 @@ function App() {
     <div className="mainContainer">
       <motion.div
         className="mainMask"
+        animate={{ backgroundColor: maskColor }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
         style={{
           WebkitMaskPosition: maskPosition,
           WebkitMaskSize: `${size}px`,

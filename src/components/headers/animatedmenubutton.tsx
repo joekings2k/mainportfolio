@@ -1,5 +1,5 @@
 import { MotionConfig, motion } from "framer-motion";
-import type { Theme } from "./useSectionTheme";
+import type { Theme } from "../../hooks/useSectionTheme";
 
 interface Props {
   active: boolean;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Sidebar from "./sidebar";
 import AnimatedMenuButton from "./animatedmenubutton";
-import { useSectionTheme } from "./useSectionTheme";
+import { useSectionTheme } from "../../hooks/useSectionTheme";
 
 const Headers = () => {
   const [active, setActive] = useState<boolean>(false);

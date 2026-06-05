@@ -30,7 +30,7 @@ const Contact = () => {
         <MagneticiIcons>
           <a
             href={`mailto:${EMAIL}`}
-            className="inline-block text-3xl underline underline-offset-8 decoration-1 hover:decoration-2"
+            className="inline-block text-3xl underline underline-offset-8 decoration-1 hover:decoration-2 hover:text-[#7BC47F] hover:decoration-[#7BC47F] transition-colors duration-300"
           >
             {EMAIL}
           </a>
@@ -45,7 +45,7 @@ const Contact = () => {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg font-bold hover:opacity-60 transition-opacity"
+              className="text-lg font-bold hover:text-[#7BC47F] transition-colors duration-300"
             >
               {s.label}
             </a>

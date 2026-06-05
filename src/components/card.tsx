@@ -70,7 +70,7 @@ const Card = ({ image, title, stack }: Props) => {
                 // viewport={{ once: true }}
               >
                 <motion.div
-                  className="bg-cyan-300 rounded-3xl h-full"
+                  className="bg-[#7BC47F] rounded-3xl h-full"
                   initial={{ width: "0%" }}
                   transition={{ duration: 0.35 }}
                   whileHover={{ width: "100%" }}

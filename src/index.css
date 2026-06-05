@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Instrument+Serif:ital@0;1&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,8 +23,12 @@ body {
   background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #7BC47F;
   border-radius: 5px;
+}
+::selection {
+  background: rgba(123, 196, 127, 0.35);
+  color: inherit;
 }
 @layer utilities {
   .text-balance {
@@ -57,14 +61,14 @@ body {
 }
 .masked {
   position: absolute;
-  color:white;
+  z-index: 20;
+  color: white;
   mask-image: url("./assets/mask.svg");
   background-color: #000000;
   inset: 0;
   mask-repeat: no-repeat;
   display: flex;
-  
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -131,16 +135,157 @@ h1 {
   
 }
 
-.mainMask{
+.mainMask {
   position: fixed;
-  color:white;
   mask-image: url("./assets/svg/majormask.svg");
-  background-color: #FFFFFF;
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 1000px;
   width: 100%;
   height: 100%;
- z-index: 99999;
- pointer-events: none;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* ===== hero — frame ticks ===== */
+.frame-tick {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #0F1410;
+  z-index: 5;
+  pointer-events: none;
+}
+.frame-tick-tl { top: 18px; left: 18px; border-right: none; border-bottom: none; }
+.frame-tick-tr { top: 18px; right: 18px; border-left: none; border-bottom: none; }
+.frame-tick-bl { bottom: 18px; left: 18px; border-right: none; border-top: none; }
+.frame-tick-br { bottom: 18px; right: 18px; border-left: none; border-top: none; }
+
+/* ===== hero — available pulse ===== */
+.hero-pulse {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7BC47F;
+}
+.hero-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid #7BC47F;
+  animation: heroPulse 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes heroPulse {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2);   opacity: 0; }
+}
+
+/* ===== hero — time chip ===== */
+.time-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #0F1410;
+  color: #F4F1EA;
+  border-radius: 10px;
+  font-family: 'Roboto Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+}
+.time-chip-label { opacity: 0.55; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+.time-chip-clock { font-variant-numeric: tabular-nums; font-weight: 500; }
+.time-chip-tz    { opacity: 0.55; }
+.time-chip-inverted {
+  background: #F4F1EA;
+  color: #0F1410;
+}
+.time-chip::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: #7BC47F;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: heroTick 1s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes heroTick {
+  0%   { transform: scaleX(0); opacity: 1; }
+  90%  { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* ===== hero — OG circle ===== */
+.og-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid #0F1410;
+  border-radius: 50%;
+  color: #0F1410;
+  font-weight: 700;
+  font-size: 13px;
+  position: relative;
+  background: #FFFFFF;
+}
+.og-circle::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed #C4BFB3;
+  border-radius: 50%;
+  animation: heroSpin 22s linear infinite;
+}
+.og-circle-inverted {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+  background: transparent;
+}
+.og-circle-inverted::before { border-color: rgba(255,255,255,0.35); }
+
+/* ===== about — scroll word reveal ===== */
+.about-reveal .w {
+  display: inline-block;
+  opacity: 0.18;
+  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              text-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+  white-space: pre;
+}
+.about-reveal .w.lit { opacity: 1; }
+.about-reveal .w.head {
+  color: #7BC47F;
+  text-shadow: 0 0 14px rgba(123, 196, 127, 0.55);
+}
+.about-accent-glow {
+  text-shadow: 0 0 24px rgba(123, 196, 127, 0.55);
+}
+.about-accent-bar {
+  box-shadow: 0 0 10px rgba(123, 196, 127, 0.55);
+}
+.about-pulse-dot {
+  box-shadow: 0 0 8px rgba(123, 196, 127, 0.55);
+  animation: aboutBlink 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes aboutBlink { 0%, 100% { opacity: 1 } 50% { opacity: 0.4 } }
+
+/* ===== hero — spinning star next to role ===== */
+.hero-star {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  background: #7BC47F;
+  border-radius: 50%;
+  animation: heroSpin 8s linear infinite;
+}
+@keyframes heroSpin {
+  to { transform: rotate(360deg); }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import type { Theme } from "../useSectionTheme";
+import type { Theme } from "../../../hooks/useSectionTheme";
 
 interface CurveProps {
   theme: Theme;

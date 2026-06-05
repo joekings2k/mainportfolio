@@ -54,7 +54,7 @@ const WorksTest = () => {
                   className={`w-3 h-3 rounded-full  mx-1`}
                   animate={{
                     scale: centeredIndex === i ? 2 : 1,
-                    backgroundColor: centeredIndex === i ? "#1D2D44" : "white",
+                    backgroundColor: centeredIndex === i ? "#7BC47F" : "white",
                   }}
                   transition={{ duration: 0.3 ,ease: "easeInOut" }}
                 ></motion.div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { listvariants } from "../../anim";
-import type { Theme } from "../useSectionTheme";
+import type { Theme } from "../../../hooks/useSectionTheme";
 
 interface Props {
   title: string;
