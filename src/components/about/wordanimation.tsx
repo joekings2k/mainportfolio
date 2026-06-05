@@ -1,5 +1,5 @@
-import  { ReactNode, useRef } from "react";
-import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { ReactNode } from "react";
+import { motion, MotionValue, useTransform } from "framer-motion";
 
 export const Word = ({
   children,
@@ -10,7 +10,6 @@ export const Word = ({
   range: number[];
   scrollYProgress: MotionValue<number>;
 }) => {
-  const opacity = useTransform(scrollYProgress, range, [0, 1]);
   const splitLetter = children?.split("");
 
   const amount = range[1] - range[0];

@@ -1,5 +1,4 @@
-import { useScroll,motion, useTransform } from 'framer-motion';
-import React from 'react'
+import { useScroll, motion, useTransform } from 'framer-motion';
 
 const Lilicon = ({refs}:{refs:any}) => {
   const  {scrollYProgress}= useScroll({

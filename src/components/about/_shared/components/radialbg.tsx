@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import MagneticiIcons from "../framerMagnetic";
 import ReactHoverIcon from "../iconshover/reacthover";
 import CssIcon from "../iconshover/cssicon";
@@ -12,12 +12,12 @@ import HtmlIcon from "../iconshover/htmlicon";
 import NodeIcon from "../iconshover/nodeicon";
 import Expressicon from "../iconshover/expressicon";
 import MongodbIcon from "../iconshover/mongodbicon";
-import Tooltip from "../../../playground/tooltip";
+import Tooltip from "./tooltip";
 const Radialbg = () => {
   const color = " orange";
   const size = "50px";
   return (
-    <div className=" w-full h-full relative bg-black  px-[6rem]">
+    <div className=" w-full h-full relative bg-black  px-[6rem]" data-theme="dark">
       <div className="w-full h-screen top-0 flex items-center justify-center rounded-full bg-circularLight sticky">
         <Tooltip text="React">
           <MagneticiIcons>

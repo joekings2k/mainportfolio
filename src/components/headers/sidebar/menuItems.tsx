@@ -1,17 +1,32 @@
-
-
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { listvariants } from "../../anim";
+import type { Theme } from "../../../hooks/useSectionTheme";
 
 interface Props {
   title: string;
   link: string;
   index: number;
+  theme: Theme;
+  onNavigate?: () => void;
 }
 const DURATION = 0.25;
 const STAGGER = 0.025;
 const ease = [0.76, 0, 0.24, 1];
-const MenuItem = ({ title, link, index }: Props) => {
+
+const MenuItem = ({ title, link, index, theme, onNavigate }: Props) => {
+  const bg = theme === "dark" ? "#FFFFFF" : "#000000";
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (link.startsWith("#")) {
+      e.preventDefault();
+      const target = document.querySelector(link);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+      onNavigate?.();
+    }
+  };
+
   return (
     <motion.div
       custom={index}
@@ -19,19 +34,20 @@ const MenuItem = ({ title, link, index }: Props) => {
       initial="initial"
       animate="enter"
       exit={"exit"}
-      className="text-text overflow-hidden font-bold
-      "
+      className="text-text overflow-hidden font-bold"
     >
       <motion.a
         href={link}
+        onClick={handleClick}
         initial={"initial"}
         whileHover={"hovered"}
-        className="text-4xl bg-black relative"
+        className="text-4xl relative cursor-pointer transition-colors duration-500"
+        style={{ backgroundColor: bg }}
       >
-        {" "}
         <div className="overflow-hidden">
           {title.split("").map((t, i) => (
             <motion.span
+              key={i}
               variants={{ initial: { y: 0 }, hovered: { y: "-100%" } }}
               className="inline-block"
               transition={{
@@ -47,6 +63,7 @@ const MenuItem = ({ title, link, index }: Props) => {
         <div className="absolute inset-0">
           {title.split("").map((t, i) => (
             <motion.span
+              key={i}
               className="inline-block gradient-text"
               variants={{ initial: { y: "100%" }, hovered: { y: 0 } }}
               transition={{

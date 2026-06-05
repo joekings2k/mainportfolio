@@ -1,27 +1,28 @@
-"use client";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-const Curve = () => {
+import type { Theme } from "../../../hooks/useSectionTheme";
+
+interface CurveProps {
+  theme: Theme;
+}
+
+const Curve = ({ theme }: CurveProps) => {
   const [windowHeight, setWindowHeight] = useState(0);
 
   useEffect(() => {
-    // This will run only on the client
     if (typeof window !== "undefined") {
       setWindowHeight(window.innerHeight);
     }
   }, []);
 
-  if (!windowHeight) return null; // Wait for windowHeight to be set
-  const initialPath = `M50 0 L50 ${window.innerHeight} Q-50 ${
-    window.innerHeight / 2
+  if (!windowHeight) return null;
+
+  const initialPath = `M50 0 L50 ${windowHeight} Q-50 ${
+    windowHeight / 2
   } 50 0`;
-  const targetPath = `M50 0 L50 ${window.innerHeight} Q50 ${
-    window.innerHeight / 2
-  } 50 0`;
+  const targetPath = `M50 0 L50 ${windowHeight} Q50 ${windowHeight / 2} 50 0`;
   const curve = {
-    initial: {
-      d: initialPath,
-    },
+    initial: { d: initialPath },
     enter: {
       d: targetPath,
       transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] },
@@ -31,14 +32,20 @@ const Curve = () => {
       transition: { duration: 1.3, ease: [0.76, 0, 0.24, 1], delay: 0.7 },
     },
   };
+
+  const fill = theme === "dark" ? "#FFFFFF" : "#000000";
+
   return (
-    <svg className="absolute top-0 left-[-49.5px] w-[50px] h-full fill-[#000000] stroke-none">
+    <svg
+      className="absolute top-0 left-[-49.5px] w-[50px] h-full stroke-none transition-[fill] duration-500"
+      style={{ fill }}
+    >
       <motion.path
         variants={curve}
         initial="initial"
         animate="enter"
         exit="exit"
-      ></motion.path>
+      />
     </svg>
   );
 };

@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# Jonathan Ogbeide — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio site showcasing my work, experience, and services. Built as a single-page, scroll-driven experience with animated transitions.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 18** + **TypeScript**
+- **Vite** for dev/build
+- **Tailwind CSS** for styling
+- **Framer Motion** + **GSAP** for animations
+- **Lenis** for smooth scrolling
 
-## Expanding the ESLint configuration
+## Sections
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Hero** — masked cursor reveal effect
+- **About** — scroll-linked text reveal, experience & education, tech stack
+- **Work** — horizontal-scroll project showcase
+- **Services** — stacking service cards
+- **Contact** — email + socials
 
-- Configure the top-level `parserOptions` property like this:
+## Getting started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+yarn install
+yarn dev       # start dev server
+yarn build     # type-check + production build
+yarn preview   # preview production build
+yarn lint      # run eslint
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Project structure
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+src/
+  App.tsx              # composes sections + cursor mask
+  components/
+    headers/           # fixed menu button + sidebar nav
+    herosect/          # hero with masked reveal
+    about/             # about, experience, tech stack
+    works/             # horizontal-scroll projects
+    myservices/        # stacking service cards
+    contact/           # contact section
+    fillercomponent.tsx
+  constants/           # nav items, work data, types
+  assets/              # images + svg icons
+```
+
+## Deployment
+
+Static build — deploy the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages).

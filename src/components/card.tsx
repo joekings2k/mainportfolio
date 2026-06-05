@@ -1,29 +1,16 @@
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-import React, { useRef, useState } from "react";
-import {  motion, useInView, } from "framer-motion";
 interface Props {
   image: any;
   title: string;
   stack: string[];
 }
+
 const Card = ({ image, title, stack }: Props) => {
-  const ref = useRef<any>();
-  const [isHoverd ,setIsHovered]= useState<boolean>(false)
-  const isInview = useInView(ref, { once: false });
-  const textVarients = {
-    initial: {
-      y: -500,
-      opacity: 0,
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeOut",
-      },
-    },
-  };
+  const ref = useRef<any>(null);
+  const [isHoverd, setIsHovered] = useState<boolean>(false);
+
   return (
     <div
       className="w-[95vw] md:w-[65vw] h-[80vh] flex justify-center items-center relative"
@@ -83,7 +70,7 @@ const Card = ({ image, title, stack }: Props) => {
                 // viewport={{ once: true }}
               >
                 <motion.div
-                  className="bg-cyan-300 rounded-3xl h-full"
+                  className="bg-[#7BC47F] rounded-3xl h-full"
                   initial={{ width: "0%" }}
                   transition={{ duration: 0.35 }}
                   whileHover={{ width: "100%" }}

@@ -1,20 +1,51 @@
 import { MotionConfig, motion } from "framer-motion";
+import type { Theme } from "../../hooks/useSectionTheme";
+
 interface Props {
   active: boolean;
   setActive: (val: (val: boolean) => boolean) => void;
+  theme: Theme;
 }
-const AnimatedMenuButton = ({ active, setActive }: Props) => {
+
+const AnimatedMenuButton = ({ active, setActive, theme }: Props) => {
+  const isDark = theme === "dark";
+
+  // When page is dark: button is white (spans black). Active flips.
+  // When page is light: button is black (spans white). Active flips.
+  const containerBg = active
+    ? isDark
+      ? "#000000"
+      : "#FFFFFF"
+    : isDark
+    ? "#FFFFFF"
+    : "#000000";
+
+  const spanBg = active
+    ? isDark
+      ? "#FFFFFF"
+      : "#000000"
+    : isDark
+    ? "#000000"
+    : "#FFFFFF";
+
   return (
     <MotionConfig transition={{ duration: "0.3", ease: "easeInOut" }}>
       <motion.div
-        className={`relative h-10 w-10 rounded-full ${active ? "bg-[white]" : "bg-black"} transition-colors duration-1000`}
+        className="relative h-10 w-10 rounded-full transition-colors duration-500"
+        style={{ backgroundColor: containerBg }}
         animate={active ? "open" : "close"}
         onClick={() => setActive((previous: any) => !previous)}
         initial={false}
       >
         <motion.span
-          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
-          style={{ top: "35%", left: "50%", x: "-50%", y: "-50%" }}
+          className="absolute h-0.5 w-5 transition-colors duration-500"
+          style={{
+            top: "35%",
+            left: "50%",
+            x: "-50%",
+            y: "-50%",
+            backgroundColor: spanBg,
+          }}
           variants={{
             open: {
               rotate: ["0deg", "0deg", "45deg"],
@@ -27,8 +58,14 @@ const AnimatedMenuButton = ({ active, setActive }: Props) => {
           }}
         />
         <motion.span
-          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
-          style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
+          className="absolute h-0.5 w-5 transition-colors duration-500"
+          style={{
+            top: "50%",
+            left: "50%",
+            x: "-50%",
+            y: "-50%",
+            backgroundColor: spanBg,
+          }}
           variants={{
             open: {
               rotate: ["0deg", "0deg", "-45deg"],
@@ -39,8 +76,14 @@ const AnimatedMenuButton = ({ active, setActive }: Props) => {
           }}
         />
         <motion.span
-          className={`absolute h-0.5 w-5 ${active ? "bg-[black]" : "bg-white"}`}
-          style={{ bottom: "31%", left: "50%", x: "-50%", y: "-50%" }}
+          className="absolute h-0.5 w-5 transition-colors duration-500"
+          style={{
+            bottom: "31%",
+            left: "50%",
+            x: "-50%",
+            y: "-50%",
+            backgroundColor: spanBg,
+          }}
           variants={{
             open: {
               rotate: ["0deg", "0deg", "45deg"],

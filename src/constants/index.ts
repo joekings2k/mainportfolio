@@ -4,24 +4,22 @@ import worksect3 from "../assets/worksect3.png";
 export const navItems = [
   {
     title: "Home",
-    link: "/",
-  },
-  {
-    title: "Work",
-    link: "/work",
+    link: "#home",
   },
   {
     title: "About",
-    link: "/about",
+    link: "#about",
+  },
+  {
+    title: "Work",
+    link: "#work",
   },
   {
     title: "Contact",
-    link: "/contact",
+    link: "#contact",
   },
 ];
 
-const sidebardesktopwidth = "20rem";
-const sidebarmobileWidth = "10rem";
 export const workData = [
   {
     image: worksect1,
