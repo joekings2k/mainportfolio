@@ -7,7 +7,7 @@ import SpecSheet from "./sections/specSheet";
 import Intro from "./sections/intro";
 import Highlights from "./sections/highlights";
 import NowStrip from "./sections/nowStrip";
-import Principles from "./sections/principles";
+
 import Signoff from "./sections/signoff";
 
 const About = () => {
@@ -38,7 +38,7 @@ const About = () => {
           <SectionHead />
           <Masthead />
           <SpecSheet />
-          <div className="flex flex-col gap-18">
+          <div className="flex flex-col gap-[72px]">
             <Intro />
             <Highlights />
             <NowStrip />

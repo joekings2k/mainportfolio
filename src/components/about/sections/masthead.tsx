@@ -1,7 +1,7 @@
 const Masthead = () => {
   return (
     <section className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:items-end pb-9 mb-20 border-b border-[#2A2E2A]">
-      <div className="flex flex-col gap-4.5">
+      <div className="flex flex-col gap-[18px]">
         <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.22em] uppercase text-[#6E7470]">
           <span className="about-accent-bar inline-block w-7 h-px bg-[#7BC47F]" />
           <span>Full-stack developer · est. 2022</span>

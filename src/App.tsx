@@ -1,7 +1,8 @@
 import Headers from "./components/headers";
 import Herosect from "./components/herosect";
 import About from "./components/about";
-import WorksTest from "./components/works/test";
+import Experience from "./components/experience";
+import Works from "./components/works";
 import Services from "./components/myservices";
 import Contact from "./components/contact";
 import FillerComponent from "./components/fillercomponent";
@@ -62,8 +63,12 @@ function App() {
         <About />
       </section>
 
+      <section id="experience" data-theme="dark">
+        <Experience />
+      </section>
+
       <section id="work" data-theme="dark">
-        <WorksTest />
+        <Works />
       </section>
 
       <FillerComponent />

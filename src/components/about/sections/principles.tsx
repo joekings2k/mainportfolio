@@ -21,7 +21,7 @@ const ITEMS: Item[] = [
 const Principles = () => {
   return (
     <div>
-      <div className="flex items-baseline gap-4.5 mb-8">
+      <div className="flex items-baseline gap-[18px] mb-8">
         <span className="font-mono text-[11px] tracking-[0.18em] text-[#6E7470]">
           01.2
         </span>
