@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import MagneticiIcons from "../about/_shared/framerMagnetic";
 
-const EMAIL = "collincity111@gmail.com";
+const EMAIL = "eromoselejonthan@gmail.com";
 
 const SOCIALS = [
   { label: "Linkedin", href: "https://www.linkedin.com/" },

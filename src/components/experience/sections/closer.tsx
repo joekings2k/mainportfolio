@@ -1,4 +1,4 @@
-const EMAIL = "collincity111@gmail.com";
+const EMAIL = "eromoselejonthan@gmail.com";
 
 const Closer = () => {
   return (
