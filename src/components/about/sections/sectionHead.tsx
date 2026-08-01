@@ -20,7 +20,7 @@ const SectionHead = () => {
   }, []);
 
   return (
-    <header className="flex items-end justify-between gap-8 pb-9 border-b border-[#2A2E2A] mb-22">
+    <header className="flex items-end justify-between gap-8 pb-9 border-b border-[#2A2E2A] mb-[88px]">
       <div className="flex items-center gap-3.5 font-mono text-[12px] tracking-[0.18em] uppercase text-[#6E7470]">
         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#2A2E2A] text-[10px] text-[#F4F1EA]">
           01

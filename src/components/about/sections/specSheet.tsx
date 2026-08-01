@@ -18,7 +18,7 @@ const SpecSheet = () => {
         <div
           key={c.k}
           className={[
-            "py-5.5 pr-6 flex flex-col gap-2",
+            "py-[22px] pr-6 flex flex-col gap-2",
             i === 0 ? "" : "md:pl-6",
             i % 2 === 0 ? "pl-0 md:pl-6 md:pl-0" : "pl-6",
             i === 0 ? "md:pl-0" : "",

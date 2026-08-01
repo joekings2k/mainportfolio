@@ -73,6 +73,28 @@ body {
   height: 100%;
   width: 100%;
 }
+/* reusable cursor-spotlight reveal layer (see MaskReveal.tsx) */
+.mask-reveal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  mask-image: url("./assets/mask.svg");
+  -webkit-mask-image: url("./assets/mask.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* invert an entire duplicated subtree (lightness flips, hue preserved) */
+.mask-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+/* cancel the parent inversion on media and desaturate: photos read as a
+   true-lightness GRAYSCALE version inside the reveal spotlight */
+.mask-invert img,
+.mask-invert video {
+  filter: grayscale(1) invert(1) hue-rotate(180deg);
+}
 .sectFilter{
 position: absolute;
   color:white;
@@ -250,21 +272,7 @@ h1 {
 }
 .og-circle-inverted::before { border-color: rgba(255,255,255,0.35); }
 
-/* ===== about — scroll word reveal ===== */
-.about-reveal .w {
-  display: inline-block;
-  opacity: 0.18;
-  transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-              text-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity;
-  white-space: pre;
-}
-.about-reveal .w.lit { opacity: 1; }
-.about-reveal .w.head {
-  color: #7BC47F;
-  text-shadow: 0 0 14px rgba(123, 196, 127, 0.55);
-}
+/* ===== about — section accents ===== */
 .about-accent-glow {
   text-shadow: 0 0 24px rgba(123, 196, 127, 0.55);
 }
@@ -276,6 +284,133 @@ h1 {
   animation: aboutBlink 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 @keyframes aboutBlink { 0%, 100% { opacity: 1 } 50% { opacity: 0.4 } }
+
+/* ===== experience — timeline spine + marker ring ===== */
+.exp-spine {
+  position: absolute;
+  left: 24px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #2A2E2A 6%,
+    #2A2E2A 94%,
+    transparent 100%
+  );
+}
+.exp-spine-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  background: #7BC47F;
+  box-shadow: 0 0 10px rgba(123, 196, 127, 0.5);
+}
+.exp-entry {
+  position: relative;
+  padding-bottom: 56px;
+}
+.exp-entry:last-child { padding-bottom: 0; }
+
+.exp-marker {
+  position: absolute;
+  left: -65px;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0A0B0A;
+  border: 1.5px solid #6E7470;
+  transition: border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+.exp-marker-dot {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: #6E7470;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.exp-in .exp-marker { border-color: #F4F1EA; }
+.exp-in .exp-marker-dot { opacity: 1; background: #F4F1EA; }
+.exp-active .exp-marker {
+  background: #7BC47F;
+  border-color: #7BC47F;
+  animation: expRing 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  transform: scale(1.12);
+}
+.exp-active .exp-marker-dot { background: #0A0B0A; opacity: 1; }
+@keyframes expRing {
+  0%   { box-shadow: 0 0 0 0 rgba(123, 196, 127, 0.55); }
+  100% { box-shadow: 0 0 0 18px rgba(123, 196, 127, 0); }
+}
+
+.exp-tick {
+  position: absolute;
+  left: -47px;
+  top: 17px;
+  width: 38px;
+  height: 1px;
+  background: #2A2E2A;
+  transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.exp-active .exp-tick { background: #7BC47F; }
+.exp-active .exp-role-co { color: #7BC47F; }
+.exp-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7BC47F;
+  box-shadow: 0 0 8px rgba(123, 196, 127, 0.6);
+  animation: aboutBlink 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+.exp-desc strong {
+  color: #F4F1EA;
+  font-weight: 600;
+  background: linear-gradient(to bottom, transparent 60%, rgba(123, 196, 127, 0.18) 60%);
+  padding: 0 2px;
+}
+@media (max-width: 780px) {
+  .exp-marker { left: -44px; width: 14px; height: 14px; top: 10px; }
+  .exp-tick { left: -30px; width: 22px; top: 16px; }
+  .exp-spine { left: 18px; }
+}
+
+/* ===== works — scroll dot for intro hint ===== */
+.works-scrolldot {
+  animation: worksScrollDot 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes worksScrollDot {
+  0%   { transform: translateY(0); opacity: 0; }
+  25%  { opacity: 1; }
+  60%  { transform: translateY(8px); opacity: 0; }
+  100% { opacity: 0; }
+}
+.works-wm {
+  -webkit-text-stroke: 1px #2A2E2A;
+  transition: -webkit-text-stroke-color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.works-wm-active {
+  -webkit-text-stroke-color: #7BC47F;
+}
+.works-shot-shadow {
+  box-shadow: 0 30px 70px -42px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.works-shot-shadow-active {
+  box-shadow: 0 44px 90px -46px rgba(0, 0, 0, 1);
+}
+.works-badge-pulse {
+  box-shadow: 0 0 8px rgba(123, 196, 127, 0.5);
+  animation: aboutBlink 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
 
 /* ===== hero — spinning star next to role ===== */
 .hero-star {

@@ -115,7 +115,7 @@ const Herosect = () => {
       </div>
 
       <div className="time-chip absolute bottom-10 left-8 z-10">
-        <span className="time-chip-label">LISBON</span>
+        <span className="time-chip-label">Nigeria</span>
         <span className="time-chip-clock">{clock}</span>
       </div>
 

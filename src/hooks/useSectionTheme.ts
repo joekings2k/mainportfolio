@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 
 export type Theme = "light" | "dark";
 
-export function useSectionTheme(defaultTheme: Theme = "light"): Theme {
+export function useSectionTheme(
+  defaultTheme: Theme = "light",
+  rescanKey?: unknown
+): Theme {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
   useEffect(() => {
@@ -22,7 +25,9 @@ export function useSectionTheme(defaultTheme: Theme = "light"): Theme {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+    // rescanKey lets callers (e.g. route changes) re-observe a fresh DOM
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rescanKey]);
 
   return theme;
 }
