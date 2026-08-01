@@ -73,6 +73,28 @@ body {
   height: 100%;
   width: 100%;
 }
+/* reusable cursor-spotlight reveal layer (see MaskReveal.tsx) */
+.mask-reveal-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  mask-image: url("./assets/mask.svg");
+  -webkit-mask-image: url("./assets/mask.svg");
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* invert an entire duplicated subtree (lightness flips, hue preserved) */
+.mask-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+/* cancel the parent inversion on media and desaturate: photos read as a
+   true-lightness GRAYSCALE version inside the reveal spotlight */
+.mask-invert img,
+.mask-invert video {
+  filter: grayscale(1) invert(1) hue-rotate(180deg);
+}
 .sectFilter{
 position: absolute;
   color:white;

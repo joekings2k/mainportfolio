@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { archiveLink } from "../data";
 
 const Outro = () => {
@@ -13,12 +14,12 @@ const Outro = () => {
               Case studies, code and a few experiments that never shipped.
             </p>
           </div>
-          <a
-            href={archiveLink}
+          <Link
+            to={archiveLink}
             className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-[#7BC47F] text-[#0A0B0A] font-mono text-[11px] tracking-[0.16em] uppercase font-semibold transition-transform duration-200 hover:translate-x-1"
           >
             View all work →
-          </a>
+          </Link>
         </div>
       </div>
     </section>

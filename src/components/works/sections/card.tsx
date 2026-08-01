@@ -4,6 +4,7 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
+import { Link } from "react-router-dom";
 import type { WorkItem } from "../data";
 
 type Props = {
@@ -72,9 +73,11 @@ const Card = ({
         {wmNumber}
       </span>
 
-      <figure
+      <Link
+        to={`/work/${item.slug}`}
+        aria-label={`View ${item.title} case study`}
         className={[
-          "works-shot-shadow relative w-full h-[clamp(320px,52vh,560px)] rounded-2xl overflow-hidden bg-[#121412] border border-[#2A2E2A]",
+          "works-shot-shadow block relative w-full h-[clamp(320px,52vh,560px)] rounded-2xl overflow-hidden bg-[#121412] border border-[#2A2E2A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7BC47F]",
           isCenter && "works-shot-shadow-active",
         ]
           .filter(Boolean)
@@ -124,7 +127,7 @@ const Card = ({
             {item.year}
           </span>
         </div>
-      </figure>
+      </Link>
 
       <div className="pt-5 px-1 border-t border-[#2A2E2A] mt-5 flex flex-col gap-3">
         <div className="flex items-baseline justify-between gap-4">
