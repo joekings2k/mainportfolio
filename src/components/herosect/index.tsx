@@ -1,6 +1,7 @@
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { motion } from "framer-motion";
 import MagneticiIcons from "../about/_shared/framerMagnetic";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const SOCIAL_LINKS = [
   { label: "Linkedin", href: "https://www.linkedin.com/" },
@@ -23,9 +24,9 @@ const HeroHeadline = ({ setIshovered, inverted = false }: HeadlineProps) => {
   const eyebrowRule = inverted ? "bg-white/30" : "bg-[#E2DED4]";
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center px-5">
       <div
-        className={`flex items-center justify-center gap-4 mb-8 font-mono text-[11px] tracking-[0.18em] uppercase ${eyebrowText}`}
+        className={`flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 font-mono text-[10px] sm:text-[11px] tracking-[0.18em] uppercase ${eyebrowText}`}
       >
         <span
           className={`inline-flex items-center justify-center w-6 h-6 rounded-full border text-[10px] ${eyebrowChip}`}
@@ -33,14 +34,14 @@ const HeroHeadline = ({ setIshovered, inverted = false }: HeadlineProps) => {
           01
         </span>
         <span>Introduction</span>
-        <span className={`w-16 h-px ${eyebrowRule}`} />
-        <span>scroll to continue ↓</span>
+        <span className={`hidden sm:block w-16 h-px ${eyebrowRule}`} />
+        <span className="hidden sm:inline">scroll to continue ↓</span>
       </div>
 
       <aside
         onMouseEnter={() => setIshovered(true)}
         onMouseLeave={() => setIshovered(false)}
-        className="text-[6rem] font-extrabold leading-[0.92] tracking-tight text-center"
+        className="text-[clamp(2.6rem,13vw,6rem)] font-extrabold leading-[0.95] tracking-tight text-center"
       >
         <p className={textColor}>Hello there,</p>
         <p className={textColor}>I am Jonathan</p>
@@ -59,6 +60,8 @@ const Herosect = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [ishovered, setIshovered] = useState<boolean>(false);
   const [clock, setClock] = useState("--:--");
+  // No hover on touch — drop the mask reveal on mobile and show the clean base.
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
     const setFromEvent = (e: MouseEvent) => {
@@ -97,29 +100,29 @@ const Herosect = () => {
       <span className="frame-tick frame-tick-bl" />
       <span className="frame-tick frame-tick-br" />
 
-      <div className="absolute top-7 left-9 flex items-center gap-3 font-mono text-[12px] tracking-[0.04em] text-black z-10">
+      <div className="absolute top-6 left-5 sm:top-7 sm:left-9 flex items-center gap-2.5 sm:gap-3 font-mono text-[11px] sm:text-[12px] tracking-[0.04em] text-black z-10">
         <span className="w-2.5 h-2.5 rounded-full bg-black shadow-[0_0_0_4px_rgba(15,20,16,0.08)]" />
         <span>jonathan / portfolio · v.04</span>
       </div>
 
-      <div className="absolute top-9 left-1/2 -translate-x-1/2 flex items-center gap-2 font-mono text-[11px] tracking-[0.04em] text-[#3A3F3B] z-10">
+      <div className="hidden md:flex absolute top-9 left-1/2 -translate-x-1/2 items-center gap-2 font-mono text-[11px] tracking-[0.04em] text-[#3A3F3B] z-10">
         <span className="hero-pulse" />
         <span>Available for work — Q3 2026</span>
       </div>
 
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 z-10">
+      <div className="hidden md:block absolute right-5 top-1/2 -translate-y-1/2 z-10">
         <p className="[writing-mode:vertical-rl] font-mono text-[11px] tracking-[0.2em] uppercase text-[#6E7470]">
-          Based in Lisbon &nbsp;·&nbsp;{" "}
+          Based in Nigeria &nbsp;·&nbsp;{" "}
           <b className="text-black font-semibold">EST. 2026</b>
         </p>
       </div>
 
-      <div className="time-chip absolute bottom-10 left-8 z-10">
+      <div className="time-chip absolute bottom-6 left-5 sm:bottom-10 sm:left-8 z-10">
         <span className="time-chip-label">Nigeria</span>
         <span className="time-chip-clock">{clock}</span>
       </div>
 
-      <div className="absolute top-[40%] left-[-150px] flex gap-10 font-bold rotate-90 z-0">
+      <div className="hidden md:flex absolute top-[40%] left-[-150px] gap-10 font-bold rotate-90 z-0">
         {SOCIAL_LINKS.map((s) => (
           <a
             key={s.label}
@@ -133,8 +136,8 @@ const Herosect = () => {
         ))}
       </div>
 
-      <div className="absolute bottom-10 right-10 flex items-center gap-4 font-bold z-10 text-black">
-        <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-[#3A3F3B] font-normal">
+      <div className="absolute bottom-6 right-5 sm:bottom-10 sm:right-10 flex items-center gap-3 sm:gap-4 font-bold z-10 text-black">
+        <span className="hidden sm:inline font-mono text-[11px] tracking-[0.16em] uppercase text-[#3A3F3B] font-normal">
           Selected works →
         </span>
         <MagneticiIcons>
@@ -142,46 +145,48 @@ const Herosect = () => {
         </MagneticiIcons>
       </div>
 
-      <motion.div
-        className="masked"
-        animate={{
-          WebkitMaskPosition: `${mousePosition.x - parseInt(size) / 2}px ${
-            mousePosition.y - parseInt(size) / 2
-          }px`,
-          WebkitMaskSize: `${size}px`,
-        }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-      >
-        <HeroHeadline setIshovered={setIshovered} inverted />
+      {isDesktop && (
+        <motion.div
+          className="masked"
+          animate={{
+            WebkitMaskPosition: `${mousePosition.x - parseInt(size) / 2}px ${
+              mousePosition.y - parseInt(size) / 2
+            }px`,
+            WebkitMaskSize: `${size}px`,
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
+          <HeroHeadline setIshovered={setIshovered} inverted />
 
-        <div className="time-chip time-chip-inverted absolute bottom-10 left-8 z-10">
-          <span className="time-chip-label">LISBON</span>
-          <span className="time-chip-clock">{clock}</span>
-        </div>
+          <div className="time-chip time-chip-inverted absolute bottom-10 left-8 z-10">
+            <span className="time-chip-label">LISBON</span>
+            <span className="time-chip-clock">{clock}</span>
+          </div>
 
-        <div className="absolute top-[40%] left-[-150px] flex gap-10 font-bold rotate-90 z-10 text-white">
-          {SOCIAL_LINKS.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#7BC47F] transition-colors duration-300"
-            >
-              {s.label}
-            </a>
-          ))}
-        </div>
+          <div className="absolute top-[40%] left-[-150px] flex gap-10 font-bold rotate-90 z-10 text-white">
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#7BC47F] transition-colors duration-300"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
 
-        <div className="absolute bottom-10 right-10 flex items-center gap-4 font-bold z-10 text-white">
-          <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/60 font-normal">
-            Selected works →
-          </span>
-          <MagneticiIcons>
-            <span className="og-circle og-circle-inverted">OG</span>
-          </MagneticiIcons>
-        </div>
-      </motion.div>
+          <div className="absolute bottom-10 right-10 flex items-center gap-4 font-bold z-10 text-white">
+            <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-white/60 font-normal">
+              Selected works →
+            </span>
+            <MagneticiIcons>
+              <span className="og-circle og-circle-inverted">OG</span>
+            </MagneticiIcons>
+          </div>
+        </motion.div>
+      )}
 
       <HeroHeadline setIshovered={setIshovered} />
     </div>

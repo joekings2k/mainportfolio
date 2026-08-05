@@ -17,7 +17,9 @@ const About = () => {
     target: boxRef,
     offset: ["start start", "end end"],
   });
-  const scale = useTransform(scrollYProgress, [0, 1], [0, 6]);
+  // 60vmax base × 3 = 180vmax at full scale — always exceeds the viewport
+  // diagonal (~141vmax), so the fill covers the screen at any size.
+  const scale = useTransform(scrollYProgress, [0, 1], [0, 3]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
 
   return (
@@ -27,7 +29,7 @@ const About = () => {
           <div className="w-full h-full absolute top-0 flex items-center justify-center">
             <motion.div
               style={{ scale, opacity }}
-              className="w-80 h-80 rounded-full bg-black z-50"
+              className="w-[60vmax] h-[60vmax] rounded-full bg-[#0A0B0A] z-50"
             />
           </div>
         </div>

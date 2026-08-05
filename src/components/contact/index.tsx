@@ -12,9 +12,9 @@ const SOCIALS = [
 
 const Contact = () => {
   return (
-    <footer className="bg-black text-white min-h-screen flex flex-col justify-between px-[6rem] py-20">
+    <footer className="bg-black text-white min-h-screen flex flex-col justify-between px-6 sm:px-12 md:px-[6rem] py-16 md:py-20 overflow-x-hidden">
       <div>
-        <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-6">
+        <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-white/50 mb-6">
           Get in touch
         </p>
         <motion.h2
@@ -22,7 +22,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="text-[6rem] font-extrabold leading-none mb-10"
+          className="text-[clamp(2.5rem,11vw,6rem)] font-extrabold leading-[0.95] md:leading-none mb-8 md:mb-10"
         >
           Let's build <br /> something together.
         </motion.h2>
@@ -30,29 +30,29 @@ const Contact = () => {
         <MagneticiIcons>
           <a
             href={`mailto:${EMAIL}`}
-            className="inline-block text-3xl underline underline-offset-8 decoration-1 hover:decoration-2 hover:text-[#7BC47F] hover:decoration-[#7BC47F] transition-colors duration-300"
+            className="inline-block break-all text-lg sm:text-2xl md:text-3xl underline underline-offset-8 decoration-1 hover:decoration-2 hover:text-[#7BC47F] hover:decoration-[#7BC47F] transition-colors duration-300"
           >
             {EMAIL}
           </a>
         </MagneticiIcons>
       </div>
 
-      <div className="mt-20 flex flex-col gap-10">
-        <div className="flex flex-wrap gap-8">
+      <div className="mt-16 md:mt-20 flex flex-col gap-8 md:gap-10">
+        <div className="flex flex-wrap gap-5 sm:gap-8">
           {SOCIALS.map((s) => (
             <a
               key={s.label}
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg font-bold hover:text-[#7BC47F] transition-colors duration-300"
+              className="text-base sm:text-lg font-bold hover:text-[#7BC47F] transition-colors duration-300"
             >
               {s.label}
             </a>
           ))}
         </div>
 
-        <div className="flex justify-between items-end pt-10 border-t border-white/10 text-sm text-white/60">
+        <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-end pt-8 md:pt-10 border-t border-white/10 text-xs sm:text-sm text-white/60">
           <p>© {new Date().getFullYear()} Jonathan Ogbeide</p>
           <p>Built with React, Vite & Framer Motion</p>
         </div>

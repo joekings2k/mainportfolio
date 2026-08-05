@@ -3,18 +3,22 @@ import MaskLayout from "./layouts/MaskLayout";
 import Home from "./pages/Home";
 import CaseStudy from "./pages/CaseStudy";
 import Archive from "./pages/Archive";
+import SplashScreen from "./components/splash";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<MaskLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/archive" element={<Archive />} />
-          <Route path="/work/:slug" element={<CaseStudy />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <SplashScreen />
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MaskLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/archive" element={<Archive />} />
+            <Route path="/work/:slug" element={<CaseStudy />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
