@@ -11,8 +11,11 @@ body {
   box-sizing: border-box;
   background-color: black;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow: hidden;
-
+  /* clip horizontal overflow only — `overflow: hidden` here propagated to the
+     viewport and killed native touch scrolling on mobile (desktop kept working
+     because Lenis drives scroll from wheel events). overflow-x:hidden lets the
+     y-axis compute to auto, restoring vertical scroll on touch devices. */
+  overflow-x: hidden;
 }
 /* change vertical scrollbar style */
 /*  */
