@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { Link } from "react-router-dom";
 import type { WorkItem } from "../data";
+import CoverArt from "../coverArt";
 
 type Props = {
   item: WorkItem;
@@ -87,11 +88,15 @@ const Card = ({
           className="absolute top-0 bottom-0 -left-[8%] w-[116%] h-full"
           style={{ x: px }}
         >
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover"
-          />
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover"
+            />
+          ) : item.cover ? (
+            <CoverArt cover={item.cover} />
+          ) : null}
         </motion.div>
 
         <div className="absolute inset-0 z-[3] pointer-events-none bg-[linear-gradient(to_top,rgba(10,11,10,0.86)_0%,rgba(10,11,10,0.18)_36%,transparent_58%)]" />

@@ -317,8 +317,179 @@ const extraCaseStudies: WorkItem[] = [
   },
 ];
 
+/* Go / backend projects — shown when the Selected-Work switch is set to Go.
+ * No frontend shots, so each uses a code-drawn architecture cover.          */
+export const goWorks: WorkItem[] = [
+  {
+    slug: "gobank",
+    cover: {
+      type: "architecture",
+      client: "REST · grpc-gateway",
+      api: "Go gRPC service",
+      services: ["PostgreSQL", "sqlc", "AWS EKS"],
+    },
+    title: "Gobank",
+    badge: "Backend · Go",
+    year: "2025",
+    sub: "Banking backend",
+    meta: "Go · gRPC · Kubernetes",
+    stack: ["Go", "gRPC", "PostgreSQL", "sqlc", "Docker", "Kubernetes"],
+    study: {
+      role: "Backend engineer",
+      timeframe: "2025",
+      team: "Solo",
+      overview:
+        "A full-featured banking backend in Go that serves both gRPC and REST from a single protobuf definition — accounts, transfers, and token auth on PostgreSQL, deployed to Kubernetes.",
+      problem:
+        "Money movement has to be correct under concurrency, and the API needed to serve internal gRPC clients and plain HTTP clients without maintaining two diverging contracts.",
+      constraints: [
+        "Transfers must stay consistent under concurrent writes",
+        "One API contract for gRPC and REST consumers",
+        "Production-style deploy, not just `go run`",
+      ],
+      decisions: [
+        {
+          choice: "Protobuf as the single source of truth",
+          detail:
+            "Define the API once in protobuf and expose REST through grpc-gateway, so gRPC and HTTP can never drift apart.",
+        },
+        {
+          choice: "sqlc for type-safe queries",
+          detail:
+            "Write plain SQL and generate typed Go code from it — the compiler catches query/schema mismatches instead of production.",
+        },
+        {
+          choice: "Kubernetes on AWS EKS",
+          detail:
+            "Containerized with Docker and shipped through GitHub Actions to EKS, with Nginx ingress and TLS from cert-manager.",
+        },
+      ],
+      built: [
+        "gRPC + REST API from one protobuf definition",
+        "Transactional transfers on PostgreSQL with migrations",
+        "Token-based authentication",
+        "CI/CD to AWS EKS with Nginx ingress + cert-manager TLS",
+      ],
+      outcome:
+        "A production-shaped Go service with one contract, type-safe data access, and an automated path from commit to a TLS-secured Kubernetes cluster.",
+      learned:
+        "Generating code from a single schema — protobuf for the API, SQL for the data — removes whole categories of bugs before they're written.",
+    },
+  },
+  {
+    slug: "staypass",
+    cover: {
+      type: "architecture",
+      client: "Gate scanner · WhatsApp",
+      api: "Go API (chi)",
+      services: ["PostgreSQL", "PASETO", "HMAC passes"],
+    },
+    title: "Staypass",
+    badge: "Backend · Go",
+    year: "2026",
+    sub: "Digital gate access",
+    meta: "Go · chi · PostgreSQL",
+    stack: ["Go", "chi", "pgx", "sqlc", "goose", "PASETO"],
+    study: {
+      role: "Backend engineer",
+      timeframe: "2026 — Ongoing",
+      team: "Solo",
+      overview:
+        "A multi-tenant Go API for a digital gate-access platform that replaces paper visitor logbooks in residential estates — residents issue passes, guards validate them at the gate.",
+      problem:
+        "Paper logbooks are slow, unverifiable, and easy to fake. Estates needed a way to issue and check visitor access that works on a phone and keeps working when the gate's connection drops.",
+      constraints: [
+        "Multi-tenant: many estates, units, and roles",
+        "Phone-first users, no passwords",
+        "Gate scanners may be offline",
+      ],
+      decisions: [
+        {
+          choice: "Estate / unit / membership role model",
+          detail:
+            "Model tenancy explicitly so every query is scoped to an estate and permissions follow a resident's membership.",
+        },
+        {
+          choice: "Phone-first PASETO auth",
+          detail:
+            "Use PASETO tokens tied to phone numbers — safer defaults than JWT and a natural fit for how residents sign in.",
+        },
+        {
+          choice: "HMAC-signed visitor passes",
+          detail:
+            "Sign passes so a scanner can verify them without a round-trip, enabling offline validation at the gate.",
+        },
+      ],
+      built: [
+        "Multi-tenant API with chi, pgx, sqlc, and goose migrations",
+        "Phone-first PASETO authentication",
+        "HMAC-signed visitor passes (in progress)",
+        "WhatsApp deep-link delivery + offline scanner endpoints (in progress)",
+      ],
+      outcome:
+        "A tenant-safe foundation for digital gate access, now being extended with signed passes and offline validation.",
+      learned:
+        "Designing for the worst connection first — a guard's phone at a gate — shapes the whole system, from token format to how passes are signed.",
+    },
+  },
+  {
+    slug: "go-grep",
+    cover: {
+      type: "architecture",
+      client: "CLI flags + args",
+      api: "Go grep tool",
+      services: ["File I/O", "regexp", "stdout"],
+    },
+    title: "Go Grep Tool",
+    badge: "CLI · Go",
+    year: "2024",
+    sub: "Command-line text search",
+    meta: "Go · standard library",
+    stack: ["Go", "regexp", "CLI"],
+    study: {
+      role: "Solo",
+      timeframe: "2024",
+      team: "Solo",
+      overview:
+        "A grep-style command-line tool in Go that scans files for pattern matches, built entirely on the standard library.",
+      problem:
+        "A focused exercise in writing an idiomatic Go CLI: argument handling, efficient file scanning, and regex matching without reaching for third-party packages.",
+      constraints: [
+        "Standard library only",
+        "Must handle large files without loading them whole",
+        "Familiar, grep-like ergonomics",
+      ],
+      decisions: [
+        {
+          choice: "Stream files line by line",
+          detail:
+            "Use buffered scanning so memory stays flat no matter how big the input file is.",
+        },
+        {
+          choice: "Standard-library regexp",
+          detail:
+            "Go's RE2-based regexp guarantees linear-time matching, so no pattern can hang the tool.",
+        },
+      ],
+      built: [
+        "CLI argument parsing",
+        "Buffered file scanning",
+        "Regex pattern matching with line output",
+      ],
+      outcome:
+        "A small, dependency-free search tool that compiles to a single binary.",
+      learned:
+        "Go's standard library covers a surprising amount of real tooling — knowing it well beats adding dependencies.",
+    },
+  },
+];
+
 /** Everything routable at /work/:slug — the carousel works plus archive-only. */
-export const caseStudies: WorkItem[] = [...works, ...extraCaseStudies];
+export const caseStudies: WorkItem[] = [
+  ...works,
+  ...extraCaseStudies,
+  ...goWorks,
+];
 
 export const archiveLink = "/archive";
 
@@ -421,41 +592,41 @@ export const archive: ArchiveItem[] = [
     slug: "ai-data-scraper",
   },
 
-  /* ---- Go projects (static placeholders — fill in real ones) ---------- */
+  /* ---- Go projects — each links to its /work/:slug case study --------- */
   {
     no: "06",
     lang: "go",
-    title: "Ledger CLI",
+    title: "Gobank",
     year: "2025",
-    role: "Solo",
+    role: "Backend · Solo",
     blurb:
-      "A double-entry accounting CLI — plain-text ledgers parsed into balanced reports, built as a single static binary.",
-    stack: ["Go", "Cobra", "SQLite"],
-    accent: ["#00ADD8", "#0A2A33"],
-    href: "#",
+      "A Go banking backend serving gRPC and REST from one protobuf definition — PostgreSQL + sqlc, deployed to AWS EKS.",
+    stack: ["Go", "gRPC", "PostgreSQL", "Kubernetes"],
+    cover: goWorks[0].cover,
+    slug: "gobank",
   },
   {
     no: "07",
     lang: "go",
-    title: "Shortlink Service",
-    year: "2025",
-    role: "Backend",
+    title: "Staypass",
+    year: "2026",
+    role: "Backend · Solo",
     blurb:
-      "A URL shortener API with rate limiting, click analytics, and Redis-backed caching behind a chi router.",
-    stack: ["Go", "chi", "PostgreSQL", "Redis"],
-    accent: ["#00ADD8", "#122A2E"],
-    href: "#",
+      "A multi-tenant gate-access API replacing paper visitor logbooks — phone-first PASETO auth and HMAC-signed passes.",
+    stack: ["Go", "chi", "sqlc", "PASETO"],
+    cover: goWorks[1].cover,
+    slug: "staypass",
   },
   {
     no: "08",
     lang: "go",
-    title: "Presence Gateway",
+    title: "Go Grep Tool",
     year: "2024",
-    role: "Backend",
+    role: "Solo",
     blurb:
-      "A realtime presence and pub/sub gateway over WebSockets — tracks who's online across horizontally-scaled nodes.",
-    stack: ["Go", "WebSockets", "Redis", "Docker"],
-    accent: ["#00ADD8", "#0A2A33"],
-    href: "#",
+      "A grep-style CLI that streams files and matches patterns using only Go's standard library.",
+    stack: ["Go", "regexp", "CLI"],
+    cover: goWorks[2].cover,
+    slug: "go-grep",
   },
 ];

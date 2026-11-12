@@ -1,16 +1,20 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionValueEvent,
   useScroll,
   useTransform,
 } from "framer-motion";
-import { works, archiveLink } from "../data";
+import { archiveLink, type ArchiveLang, type WorkItem } from "../data";
+import type { SwitchProps } from "..";
+import StackSwitch from "./stackSwitch";
 import Card from "./card";
 import EndCard from "./endCard";
 import Rail from "./rail";
 
-const Track = () => {
+type Props = { lang: ArchiveLang; items: WorkItem[]; switchProps: SwitchProps };
+
+const Track = ({ lang, items: works, switchProps }: Props) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +60,22 @@ const Track = () => {
     };
   }, [measure]);
 
+  // Switching stacks: re-measure the new card set, and if the visitor is
+  // already inside the pinned carousel, restart it at the first card.
+  const firstRender = useRef(true);
+  useLayoutEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    measure();
+    setCenterIndex(0);
+    const wrap = wrapRef.current;
+    if (wrap && window.scrollY > wrap.offsetTop) {
+      window.scrollTo({ top: wrap.offsetTop, behavior: "instant" as ScrollBehavior });
+    }
+  }, [lang, measure]);
+
   useMotionValueEvent(scrollYProgress, "change", (p) => {
     const next = Math.round(p * (totalSlots - 1));
     if (next !== centerIndex) setCenterIndex(next);
@@ -92,23 +112,25 @@ const Track = () => {
               <span className="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#2A2E2A] text-[10px] text-[#F4F1EA]">
                 03
               </span>
-              <span>Selected Work</span>
+              <span className="hidden sm:inline">Selected Work</span>
             </div>
-            <div className="hidden md:block font-bold text-[22px] tracking-[-0.02em] text-[#F4F1EA]">
-              Selected Work<span className="text-[#6E7470]">.</span>
-            </div>
+            <StackSwitch id="works-track" size="sm" {...switchProps} />
           </div>
         </div>
 
         <div className="flex-1 flex items-center overflow-hidden min-h-0">
           <motion.div
+            key={lang}
             ref={trackRef}
             className="flex gap-[34px] items-stretch will-change-transform"
             style={{ x }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             {works.map((item, i) => (
               <Card
-                key={`${item.title}-${i}`}
+                key={item.slug}
                 item={item}
                 index={i}
                 totalCount={works.length}

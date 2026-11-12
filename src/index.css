@@ -410,6 +410,19 @@ h1 {
 .works-shot-shadow-active {
   box-shadow: 0 44px 90px -46px rgba(0, 0, 0, 1);
 }
+/* stack switch — breathing ring on the option the visitor hasn't tried yet */
+.works-switch-nudge {
+  box-shadow: 0 0 0 1px var(--nudge);
+  animation: worksSwitchNudge 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes worksSwitchNudge {
+  0%   { box-shadow: 0 0 0 0 var(--nudge); opacity: 0.9; }
+  70%  { box-shadow: 0 0 0 10px transparent; opacity: 0; }
+  100% { box-shadow: 0 0 0 0 transparent; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .works-switch-nudge { animation: none; opacity: 0.5; }
+}
 .works-badge-pulse {
   box-shadow: 0 0 8px rgba(123, 196, 127, 0.5);
   animation: aboutBlink 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;

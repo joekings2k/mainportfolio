@@ -34,19 +34,15 @@ const Details = () => {
     <div >
       <Lilicon refs={detsref} />
       <motion.div className="w-[55vw]" ref={detsref} initial={{x:"1000px",opacity:0}} whileInView={{x:0,opacity:1}} transition={{ease:"easeInOut",duration:1}} viewport={{once:true}}>
-        <h4>FrontEnd dev @tensGlbal</h4>
-        <p>2023-present| Lagos Festac</p>
+        <h4>Full-Stack Developer @ Tens Global Systems</h4>
+        <p>Jun 2022 – Nov 2024 | Remote</p>
         <p>
-          Optimized the Wenigro admin application's state management process by
-          40% using built-in hooks, enhancing data retrieval speed and
-          application performance. Improved data fetching and caching strategies
-          to boost retrieval speed and component interaction, benefiting over
-          1,000 users who rely on the admin application to modify an external
-          system's operations. Collaborated with the backend team to streamline
-          data flow and API communication, ensuring seamless integration of
-          frontend and backend functionalities. Additionally, decluttered and
-          consolidated global variables in the codebase, reducing redundancy by
-          30% and enhancing code readability and maintainability.
+          Designed and built 15+ secure REST APIs with Node.js, Express, and
+          Supabase, with JWT auth and role-based access control. Refactored
+          1,000+ lines of state logic with React hooks, cutting load times by
+          ~40%. Integrated Redis caching to reduce API latency by ~50%, and set
+          up GitHub Actions and Vercel deployments — shipping 20+ features at a
+          90% release success rate while sustaining 99.9% uptime.
         </p>
       </motion.div>
     </div>

@@ -119,7 +119,7 @@ const Intro = () => {
         }
         segments={[
           {
-            text: "I'm a dedicated Full-Stack Developer with over 3 years of experience, heavily focused on front-end. I specialize in building intuitive, responsive, and dynamic user interfaces — and quietly making sure the back-end keeps up.",
+            text: "I'm a dedicated Full-Stack Developer with over 4 years of experience, heavily focused on front-end. I specialize in building intuitive, responsive, and dynamic user interfaces — and quietly making sure the back-end keeps up.",
           },
         ]}
       />
