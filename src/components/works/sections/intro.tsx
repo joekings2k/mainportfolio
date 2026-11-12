@@ -1,4 +1,7 @@
-const Intro = () => {
+import type { SwitchProps } from "..";
+import StackSwitch from "./stackSwitch";
+
+const Intro = ({ switchProps }: { switchProps: SwitchProps }) => {
   return (
     <section className="min-h-[62vh] flex items-end pt-[120px] pb-2">
       <div className="w-full max-w-[1180px] mx-auto px-6 md:px-14">
@@ -42,6 +45,15 @@ const Intro = () => {
               Scroll to explore
             </span>
           </div>
+        </div>
+
+        {/* stack switch — big and up-front so nobody misses the Go work */}
+        <div className="mt-10 md:mt-14 pt-6 border-t border-[#2A2E2A] flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+          <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.18em] uppercase text-[#6E7470] shrink-0">
+            <span className="works-badge-pulse w-1.5 h-1.5 rounded-full bg-[#7BC47F]" />
+            Pick a stack
+          </div>
+          <StackSwitch id="works-intro" size="lg" {...switchProps} />
         </div>
       </div>
     </section>

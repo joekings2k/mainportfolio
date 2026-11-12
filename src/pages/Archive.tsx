@@ -48,8 +48,8 @@ const LANGS: {
     prompt: "api ▸ go build",
     logs: [
       "$ go test ./...",
-      "ok   ledger/cli         0.42s",
-      "ok   shortlink/router   0.18s",
+      "ok   gobank/api         0.42s",
+      "ok   staypass/gate      0.18s",
       "✓ go build -o bin/app",
       "→ 8.2MB static binary",
     ],
